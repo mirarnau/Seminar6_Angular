@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12 offset-lg-0">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title">LIST OF RESTAURANTS</span>
+                    <button class="btn btn-success float-end" routerLink="/create-restaurant">NEW RESTAURANT</button>
+                    <button class="btn btn-success float-start" style="background-color: burlywood; border-color: burlywood;"  routerLink="/">SEE USERS</button>
+                    <table *ngIf="listRestaurants.length > 0" class="table table-striped mt-3">
+                     <thead>
+                       <tr>
+                         <th scope="col">Owner</th>
+                         <th scope="col">Name</th>
+                         <th scope="col">Email</th>
+                         <th scope="col">Address</th>
+                         <th scope="col">Description</th>
+                         <th scope="col"></th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr *ngFor="let restaurant of listRestaurants">
+                         <td>{{ restaurant.owner }}</td>
+                         <td>{{ restaurant.restaurantName }}</td>
+                         <td>{{ restaurant.email }}</td>
+                         <td>{{ restaurant.address }}</td>
+                         <td>{{ restaurant.description }}</td>
+                         <td>
+                             <i [routerLink]="['/edit-restaurant', restaurant.restaurantName]" class="fa-solid fa-pen-to-square text-primary"></i>
+                             <i (click)="deleteRestaurant(restaurant.restaurantName)" class="fa-solid fa-trash text-danger"></i>
+                         </td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <h5 style="text-align: start; margin-top: 10px;" *ngIf="listRestaurants.length == 0">There are no restaurants in the database yet</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>

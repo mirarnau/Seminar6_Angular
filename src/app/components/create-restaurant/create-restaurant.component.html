@@ -1,0 +1,58 @@
+<div class="container mt-5">
+    <div class="class row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title">CREATE RESTAURANT</span>
+                    <form class="mt-3" [formGroup]="restaurantForm" (ngSubmit)="addRestaurant()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="owner" 
+                                class="form-control form-control-lg" placeholder="Owner">
+                            <div class="text-danger"
+                                *ngIf="restaurantForm.get('owner')?.hasError('required') && restaurantForm.get('owner')?.touched">
+                                <span>The owner is a mandatory field</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="restaurantName" 
+                                class="form-control form-control-lg" placeholder="Name">
+                            <div class="text-danger"
+                                *ngIf="restaurantForm.get('restaurantName')?.hasError('required') && restaurantForm.get('restaurantName')?.touched">
+                                <span>The name is a mandatory field</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="email"
+                                class="form-control form-control-lg" placeholder="Email">
+                            <div class="text-danger"
+                                *ngIf="restaurantForm.get('email')?.hasError('required') && restaurantForm.get('email')?.touched">
+                                <span>The email is a mandatory field</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="address"
+                                class="form-control form-control-lg" placeholder="Address">
+                            <div class="text-danger"
+                                *ngIf="restaurantForm.get('address')?.hasError('required') && restaurantForm.get('address')?.touched">
+                                <span>The address is a mandatory field</span>
+                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" formControlName="description"
+                                class="form-control form-control-lg" placeholder="Short description">
+                            <div class="text-danger"
+                                *ngIf="restaurantForm.get('description')?.hasError('required') && restaurantForm.get('description')?.touched">
+                                <span>The description is a mandatory field</span>
+                             </div>
+                        </div>
+                        <div class="mb-3">
+                            <button routerLink="/restaurants" class="btn btn-secondary btn-lg float-start">BACK</button>
+                            <button type="submit" [disabled]="restaurantForm.invalid" class="btn btn-success btn-lg float-end">DONE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
